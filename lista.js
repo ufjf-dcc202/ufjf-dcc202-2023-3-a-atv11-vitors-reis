@@ -1,7 +1,11 @@
-const lista = {"Um", "Dois", "Três"};
+const lista = ["Um","Dois","Três"];
 
 function getLista() {
-    return lista
+    return lista;
 }
 
-export{getLista}
+export function limparLista(){
+    lista.splice(0,3);
+}
+
+export{getLista};
