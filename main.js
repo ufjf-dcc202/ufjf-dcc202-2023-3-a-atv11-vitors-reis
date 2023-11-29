@@ -1,15 +1,23 @@
 import {getLista, limparLista} from "./lista.js";
 
 const pEntrada = document.querySelector('#entrada');
-const olSaida = document.querySelector('#saida')
+const olSaida = document.querySelector('#itens');
 const btnAdicionar = document.querySelector('#adicionar');
 const btnLimpar = document.querySelector('#limpar');
 
 btnLimpar.addEventListener('click', limparElementosDaLista);
-
-olSaida.innerHTML = "";
+btnAdicionar.addEventListener('click',criarElementoNaLista);
 
 atualizarItensDeLista();
+
+function criarElementoNaLista(){
+    const texto = pEntrada.textContent;
+    adicionarNaLista(texto);
+    atualizarItensDeLista();
+    pEntrada.textContent="";
+    pEntrada.focus();
+}
+
 function limparElementosDaLista(){
 limparLista();
 atualizarItensDeLista();
