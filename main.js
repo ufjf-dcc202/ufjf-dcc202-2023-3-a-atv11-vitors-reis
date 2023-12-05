@@ -1,34 +1,32 @@
-import {getLista, limparLista} from "./lista.js";
+import { getLista, limpaLista, adicionaNaLista } from "./lista.js";
 
-const pEntrada = document.querySelector('#entrada');
-const olSaida = document.querySelector('#itens');
-const btnAdicionar = document.querySelector('#adicionar');
-const btnLimpar = document.querySelector('#limpar');
+const olItens = document.querySelector("#itens");
+const pEntrada = document.querySelector("#entrada");
+const btnAdicionar = document.querySelector("#adicionar");
+const btnLimpar = document.querySelector("#limpar");
 
-btnLimpar.addEventListener('click', limparElementosDaLista);
-btnAdicionar.addEventListener('click',criarElementoNaLista);
+btnLimpar.addEventListener("click", limparIntensDeLista);
+btnAdicionar.addEventListener("click", adicionarItemNaLista);
 
-atualizarItensDeLista();
+atualizarLista();
 
-function criarElementoNaLista(){
-    const texto = pEntrada.textContent;
-    adicionarNaLista(texto);
-    atualizarItensDeLista();
-    pEntrada.textContent="";
-    pEntrada.focus();
+function adicionarItemNaLista() {
+  const item = pEntrada.textContent;
+  adicionaNaLista(item);
+  atualizarLista();
+  pEntrada.textContent = "";
 }
 
-function limparElementosDaLista(){
-limparLista();
-atualizarItensDeLista();
+function limparIntensDeLista() {
+  limpaLista();
+  atualizarLista();
 }
 
-function atualizarItensDeLista() {
-    const lista = getLista();
-    for(let i = 0;i <lista.lenght;i++) {
-        const item = lista[i];
-        const li = document.createElement('li');
-        li.textContent = item;
-        olSaida.appendChild(li);
-    }
+function atualizarLista() {
+  olItens.innerHTML = "";
+  getLista().forEach((item) => {
+    const li = document.createElement("li");
+    li.textContent = item;
+    olItens.appendChild(li);
+  });
 }
