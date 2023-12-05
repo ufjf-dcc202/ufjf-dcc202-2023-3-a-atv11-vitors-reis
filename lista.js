@@ -1,19 +1,19 @@
-const lista = ["Um", "Dois", "Três"];
+const lista = [ "Um", "Dois", "Três"];
 
-function getLista(item) {
-  return lista;
+export function getLista() {
+  return structuredClone(lista);
 }
 
-function adicionaNaLista(item) {
-  lista.push(item);
-}
-
-function removeDaLista(posicao) {
-  lista.splice(posicao, 1);
-}
-
-function limpaLista() {
+export function limpaLista() {
   lista.splice(0);
 }
 
-export { getLista, adicionaNaLista, removeDaLista, limpaLista };
+export function adicionaNaLista(item) {
+  lista.push(item);
+}
+
+export function removeDaLista(index) {
+  if (index >= 0 && index < lista.length) {
+    lista.splice(index, 1);
+  }
+}
